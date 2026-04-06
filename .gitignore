@@ -1,0 +1,28 @@
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# build / coverage
+dist/
+build/
+coverage/
+
+# TypeScript
+*.tsbuildinfo
+
+# environment
+.env
+.env.*
+!.env.example
+
+# OS
+.DS_Store
+
+# editor
+.vscode/
+.idea/
