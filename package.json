@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev:js-basics": "ts-node exercises/01-js-basics/index.ts",
-    "dev:array-methods": "ts-node exercises/02-array-methods/index.ts",
-    "dev:async": "ts-node exercises/03-async/index.ts",
-    "dev:ts-basics": "ts-node exercises/04-typescript-basics/index.ts",
-    "dev:ts-advanced": "ts-node exercises/05-typescript-advanced/index.ts",
+    "basics": "ts-node exercises/01-js-basics/index.ts",
+    "array": "ts-node exercises/02-array-methods/index.ts",
+    "async": "ts-node exercises/03-async/index.ts",
+    "basicsTs": "ts-node exercises/04-typescript-basics/index.ts",
+    "advancedTs": "ts-node exercises/05-typescript-advanced/index.ts",
     "lint": "eslint . --ext .ts",
     "format": "prettier --write ."
   },
