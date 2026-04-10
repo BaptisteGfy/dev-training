@@ -48,18 +48,39 @@ const runFetchUserById = async (): Promise<void> => {
   console.log('Exo 2:');
   console.log(result);
 };
-runFetchUserById();
+// runFetchUserById();
 
 // Exo 3 — Gérer le cas d’erreur
 // Objectif:
 // récupérer le user
 // si le user n’existe pas → lever une erreur
 
-// export const fetchUserByIdOrThrow = async (
-//   id: number
-// ): Promise<User> => {
-//   // ...
-// };
+export const fetchUserByIdOrThrow = async (id: number): Promise<User> => {
+  const user = await fetchUserById(id);
+
+  if (!user) {
+    throw new Error(`User with id ${id} not found`);
+  }
+
+  return user;
+};
+
+const runFetchUserByIdOrThrow = async (id: number): Promise<void> => {
+  try {
+    const result = await fetchUserByIdOrThrow(id);
+    console.log('Exo 3:');
+    console.log(result);
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error('Error:', error.message);
+    } else {
+      console.error('Unexpected error:', error);
+    }
+  }
+};
+
+// runFetchUserByIdOrThrow(2);
+runFetchUserByIdOrThrow(10000);
 
 // Exo 4 — Appeler avec try/catch
 // Objectif:
