@@ -15,14 +15,11 @@ const countdown = async () => {
 // Simuler un appel API qui retourne la liste des users après un délai.
 
 const fetchUsers = async (): Promise<User[]> => {
-  console.log('pending');
-  await countdown();
-  return users;
-  // return new Promise((resolve) => {
-  //   setTimeout(() => {
-  //     resolve(users);
-  //   }, 3000);
-  // });
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(users);
+    }, 1000);
+  });
 };
 
 const runFetchUsers = async (): Promise<void> => {
@@ -80,12 +77,50 @@ const runFetchUserByIdOrThrow = async (id: number): Promise<void> => {
 };
 
 // runFetchUserByIdOrThrow(2);
-runFetchUserByIdOrThrow(10000);
+// runFetchUserByIdOrThrow(10000);
 
 // Exo 4 — Appeler avec try/catch
 // Objectif:
 // Dans cette fonction :
 // appeler fetchUsers
 // appeler fetchUserById(2)
-// appeler fetchUserByIdOrThrow(999) dans un try/catch
+// appeler fetchUserByIdOrThrow(0)
 // afficher un message d’erreur propre si le user n’existe pas
+
+const runner = async (): Promise<void> => {
+  console.log('=== ASYNC BLOCK ===');
+
+  // EXO 1 - USER LIST
+  await countdown();
+  const allUsers = await fetchUsers();
+  console.log('=== EXERCICE 1 ===');
+  console.log('All users:', allUsers);
+
+  // EXO 2 - USER BY ID
+  const userById = await fetchUserById(2);
+  console.log('=== EXERCICE 2 ===');
+  console.log('User with id 2:', userById);
+
+  // EXO 3 — USER BY ID - SUCCESS
+  try {
+    const user = await fetchUserByIdOrThrow(3);
+    console.log('=== EXERCICE 3 (SUCCESS) ===');
+    console.log(user);
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error('Error:', error.message);
+    }
+  }
+
+  // EXO 3 — USER BY ID — ERROR
+  try {
+    await fetchUserByIdOrThrow(999);
+  } catch (error) {
+    console.log('=== EXERCICE 3 (ERROR) ===');
+    if (error instanceof Error) {
+      console.error(error.message);
+    }
+  }
+};
+
+runner();
