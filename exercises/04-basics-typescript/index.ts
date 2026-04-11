@@ -48,16 +48,25 @@ console.log('');
 
 // 🔹 EXO 4 — Omit
 // Objectif
-
 // Créer un produit sans certains champs
-
 // Créer un type :
 
-// type NewProduct = Omit<Product, 'id'>
+type NewProduct = Omit<Product, 'id'>;
 
-// Puis :
+const createProduct = (product: NewProduct): Product => {
+  const newID = Math.random();
+  return { id: newID, ...product };
+};
 
-// createProduct(product: NewProduct): Product
+console.log('=== EXO 4 ===');
+console.log(
+  createProduct({
+    name: 'MacBook',
+    price: 1499,
+    inStock: true,
+  }),
+);
+console.log('');
 
 // 👉 génère un id automatiquement (Math.random ou autre)
 
