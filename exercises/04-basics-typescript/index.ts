@@ -21,8 +21,10 @@ const updateProduct = (
   return { ...product, ...updates };
 };
 
+console.log('=== EXO 1 ===');
 console.log(products);
 console.log(updateProduct(products[1], { price: 100 }));
+console.log('');
 // retourner un nouveau produit
 // appliquer les updates
 
@@ -33,14 +35,17 @@ console.log(updateProduct(products[1], { price: 100 }));
 // Objectif
 
 // Sélectionner des champs utiles
-
 // Créer un type :
+type ProductPreview = Pick<Product, 'id' | 'name'>;
 
-// type ProductPreview = Pick<Product, 'id' | 'name'>
+const getProductPreview = (product: Product): ProductPreview => {
+  return { id: product.id, name: product.name };
+};
 
-// Puis :
+console.log('=== EXO 3 ===');
+console.log(getProductPreview(products[1]));
+console.log('');
 
-// getProductPreview(product: Product): ProductPreview
 // 🔹 EXO 4 — Omit
 // Objectif
 
