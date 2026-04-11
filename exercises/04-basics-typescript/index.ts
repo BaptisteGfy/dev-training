@@ -9,17 +9,20 @@ const isProductAvailable = (product: Product): boolean => product.inStock;
 
 // EXO 2 — Partial
 // Objectif
-
 // Comprendre les mises à jour
-
 // À faire
-
-// Créer une fonction :
-
-// updateProduct(product: Product, updates: Partial<Product>): Product
-
+// Créer une fonction : updateProduct
 // 👉 elle doit :
 
+const updateProduct = (
+  product: Product,
+  updates: Partial<Product>,
+): Product => {
+  return { ...product, ...updates };
+};
+
+console.log(products);
+console.log(updateProduct(products[1], { price: 100 }));
 // retourner un nouveau produit
 // appliquer les updates
 
