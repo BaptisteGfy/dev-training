@@ -72,20 +72,31 @@ console.log('');
 
 // 🔹 EXO 5 — Union & logique
 // Objectif
-
 // Commencer à raisonner avec des types
 
-// Créer :
+type ApiResponse =
+  | { success: true; data: Product[] }
+  | { success: false; error: string };
 
-// type ApiResponse =
-//   | { success: true; data: Product[] }
-//   | { success: false; error: string };
+const handleResponse = (response: ApiResponse): void => {
+  if (response.success) {
+    console.log('Products:', response.data);
+  } else {
+    console.error('Error:', response.error);
+  }
+};
 
-// Puis :
+const successResponse: ApiResponse = {
+  success: true,
+  data: products,
+};
 
-// handleResponse(response: ApiResponse): void
+const errorResponse: ApiResponse = {
+  success: false,
+  error: 'Erreur API',
+};
 
-// 👉 afficher :
-
-// les produits si success
-// l’erreur sinon
+console.log('=== EXO 5 ===');
+handleResponse(successResponse);
+handleResponse(errorResponse);
+console.log('');
